@@ -10,11 +10,17 @@ with open('words.txt', 'r') as infile:
 header = """<!DOCTYPE html>
 <html>
 <head>
-<title>Random English Words</title>
+<title>Word Nerd Tool</title>
 <style>
-body { font-family: roboto; }
-a { color: black;
-    text-decoration: none;}
+body {
+  font-family: roboto;
+  font-family: tahoma;
+  font-family: arial;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
 </style>
 <body>
 <h1>&nbsp;&nbsp;<a href="javascript:history.go(0)">REFRESH</A></h1><h2>
@@ -29,8 +35,8 @@ def home():
     random.seed()
     html = header
     for i in range(word_cnt):
-        word = random.choice(words)
-        html += '&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/search?q=%s" target="_new">%s</a><br>' % (word, word)
+        word = random.choice(words).strip()
+        html += '&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/search?q=%s+definition" target="_new">%s</a><br>' % (word, word)
     html += '</h2></body></html>'
     return flask.Response(html, mimetype='text/html')
 
