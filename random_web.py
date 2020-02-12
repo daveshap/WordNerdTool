@@ -17,7 +17,7 @@ a { color: black;
     text-decoration: none;}
 </style>
 <body>
-<a href="javascript:history.go(0)">REFRESH</A><h2><br><br>
+<h1>&nbsp;&nbsp;<a href="javascript:history.go(0)">REFRESH</A></h1><h2>
 """    
    
 
