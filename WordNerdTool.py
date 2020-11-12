@@ -185,20 +185,24 @@ def wordnet(term):
     html += expand_synset(base_synset)
     # TODO add antonyms, root hypernyms
     html += '</div>'
-    # hyponyms
-    html += '<div><h1>Hyponyms</h1>'
-    for synset in base_synset.hyponyms():
-        html += expand_synset(synset)
-    html += '</div>'
     # hypernyms
-    html += '<div><h1>Hypernyms</h1>'
+    html += '<div><h1>Hypernyms</h1><i>Concept sets that contain this word</i>'
     for synset in base_synset.root_hypernyms():
         html += expand_synset(synset)
     for synset in base_synset.hypernyms():
         html += expand_synset(synset)
+    for synset in base_synset.instance_hypernyms():
+        html += expand_synset(synset)
+    html += '</div>'
+    # hyponyms
+    html += '<div><h1>Hyponyms</h1><i>Concept sets contained within this word</i>'
+    for synset in base_synset.hyponyms():
+        html += expand_synset(synset)
+    for synset in base_synset.instance_hyponyms():
+        html += expand_synset(synset)
     html += '</div>'
     # holonyms
-    html += '<div><h1>Holonyms</h1>'
+    html += '<div><h1>Holonyms</h1><i>Concepts of which this word is an integral part</i>'
     for synset in base_synset.member_holonyms():
         html += expand_synset(synset)
     for synset in base_synset.part_holonyms():
@@ -207,7 +211,7 @@ def wordnet(term):
         html += expand_synset(synset)
     html += '</div>'
     # meronyms
-    html += '<div><h1>Meronyms</h1>'
+    html += '<div><h1>Meronyms</h1><i>Concepts which are integrally part of this word</i>'
     for synset in base_synset.member_meronyms():
         html += expand_synset(synset)
     for synset in base_synset.part_meronyms():
